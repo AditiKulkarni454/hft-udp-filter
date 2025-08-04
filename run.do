@@ -2,7 +2,7 @@
 
 # 1. Cleanup previous simulation data
 quit -sim
-vdel -all
+#vdel -all
 
 # 2. Create a working library
 vlib work
@@ -51,3 +51,6 @@ proc add_wave_signals {} {
 #    `-do "..."` executes a sequence of commands immediately after loading the design.
 #    Now, "add_wave_signals" will be a recognized command.
 vsim -gui tb_udp_filter -do "add_wave_signals; run -all"
+
+
+# 6. Run the simulation

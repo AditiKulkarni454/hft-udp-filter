@@ -124,7 +124,7 @@ module udp_packet_filter (
             S_PARSE_ETH_HEADER: begin
                 if (stream_in_if.valid) begin
                     // Decision based on the byte_counter value AFTER it has been incremented for the current data
-                    if (byte_counter == ETH_TYPE_L_OFFSET) begin
+                    if (byte_counter == ETHER_HDR_LEN) begin
                         if (captured_eth_type == ETHERTYPE_IPV4) begin
                             next_state = S_PARSE_IP_HEADER;
                         end else begin

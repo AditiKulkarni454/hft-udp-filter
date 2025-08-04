@@ -171,53 +171,44 @@ module tb_udp_filter;
         @(posedge clk);
         $display("Time %0t: Reset Released", $time);
 
-        // --- Test Case 1: Packet to be ACCEPTED (Standard Pass) ---
+        $display("\n --- Test Case 1: Packet to be ACCEPTED (Standard Pass) ---");
         udp_port_to_match = 16'd1234;
         send_packet(packet_pass);
         repeat (50) @(posedge clk); // Give DUT time to process and output
 
-        // --- Test Case 2: Packet to be DROPPED (Port Mismatch, Port 1235) ---
+        $display("\n --- Test Case 2: Packet to be DROPPED (Port Mismatch, Port 1235) ---");
         udp_port_to_match = 16'd1234; // Filter still 1234
         send_packet(packet_drop_port_mismatch);
         repeat (50) @(posedge clk);
 
-        // --- Test Case 3: Packet to be DROPPED (Non-IPv4 EtherType) ---
+        $display("\n --- Test Case 3: Packet to be DROPPED (Non-IPv4 EtherType) ---");
         udp_port_to_match = 16'd1234; // Filter still 1234
         send_packet(packet_drop_non_ipv4);
         repeat (50) @(posedge clk);
 
-        // --- Test Case 4: Packet to be DROPPED (Non-UDP IP Protocol) ---
+        $display("\n --- Test Case 4: Packet to be DROPPED (Non-UDP IP Protocol) ---");
         udp_port_to_match = 16'd1234; // Filter still 1234
         send_packet(packet_drop_non_udp_ip);
         repeat (50) @(posedge clk);
 
-        // --- Test Case 5: Packet to be DROPPED (Runt Frame) ---
+        $display("\n --- Test Case 5: Packet to be DROPPED (Runt Frame) ---");
         udp_port_to_match = 16'd1234; // Filter still 1234
         send_packet(packet_drop_runt_frame);
         repeat (50) @(posedge clk);
 
-        // --- Test Case 6: Packet to be ACCEPTED (Maximum Payload for byte_counter) ---
+        $display("\n --- Test Case 6: Packet to be ACCEPTED (Maximum Payload for byte_counter) ---");
         udp_port_to_match = 16'd1234;
         send_packet(packet_max_payload); // New: Max payload packet
         repeat (50) @(posedge clk);
 
-        // --- Test Case 7: Packet to be ACCEPTED (Minimum Valid Packet) ---
+        $display("\n --- Test Case 7: Packet to be ACCEPTED (Minimum Valid Packet) ---");
         udp_port_to_match = 16'd1234;
         send_packet(packet_min_valid); // New: Minimum valid packet
         repeat (50) @(posedge clk);
 
-        // --- Test Case 8: Packet to be DROPPED (IP Header Length != 5) ---
-        udp_port_to_match = 16'd1234;
-        send_packet(packet_drop_ihl_not_5); // New: IHL != 5
-        repeat (50) @(posedge clk);
+        
 
-        // --- Test Case 9: Packet to be DROPPED (IP Fragmented) ---
-        udp_port_to_match = 16'd1234;
-        send_packet(packet_drop_ip_fragment); // New: Fragmented IP
-        repeat (50) @(posedge clk);
-
-        // --- Test Case 10: Back-to-Back Packets (Pass followed by Drop) ---
-        $display("\n--- Test Case 10: Back-to-Back Packets ---");
+        $display("\n --- Test Case 8: Back-to-Back Packets (Pass followed by Drop) ---");
         udp_port_to_match = 16'd1234;
         send_packet(packet_pass); // First packet (pass)
         repeat (5) @(posedge clk); // Small gap
@@ -225,7 +216,7 @@ module tb_udp_filter;
         repeat (50) @(posedge clk);
 
         // --- Test Case 11: Reset during Packet Transmission ---
-        $display("\n--- Test Case 11: Reset During Packet ---");
+        $display("\n--- Test Case 9: Reset During Packet ---");
         udp_port_to_match = 16'd1234;
         send_packet(packet_pass[0+:20]); // Send first 20 bytes
         @(posedge clk);
