@@ -6,13 +6,13 @@ This project serves as a foundational example of hardware-accelerated network pr
 
 ## Table of Contents
 
-1.  [Project Overview](https://www.google.com/search?q=%23project-overview)
-2.  [Features](https://www.google.com/search?q=%23features)
+1.  [Project Overview](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#project-overview)
+2.  [Features](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#features)
 3.  [Design Details](https://www.google.com/search?q=%23design-details)
-4.  [Verification Environment](https://www.google.com/search?q=%23verification-environment)
-5.  [Performance Results](https://www.google.com/search?q=%23performance-results)
-6.  [Repository Structure](https://www.google.com/search?q=%23repository-structure)
-7.  [How to Run the Simulation](https://www.google.com/search?q=%23how-to-run-the-simulation)
+4.  [Verification Environment](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#verification-environment)
+5.  [Performance Results](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#performance-results)
+6.  [Repository Structure](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#repository-structure)
+7.  [How to Run the Simulation](https://github.com/AditiKulkarni454/hft-udp-filter/edit/main/README.md#how-to-run-the-simulation)
 
 ## Project Overview
 
