@@ -6,19 +6,22 @@ This project serves as a foundational example of hardware-accelerated network pr
 
 ## Table of Contents
 
-1.  [Project Overview](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#project-overview)
-2.  [Features](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#features)
-3.  [Design Details](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#design-details)
-4.  [Verification Environment](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#verification-environment)
-5.  [Performance Results](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#performance-results)
-6.  [Repository Structure](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#repository-structure)
-7.  [How to Run the Simulation](https://github.com/AditiKulkarni454/hft-udp-filter/main/README.md#how-to-run-the-simulation)
+1.  [Project Overview](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#project-overview)
+2.  [Features](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#features)
+3.  [Design Details](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#design-details)
+4.  [Verification Environment](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#verification-environment)
+5.  [Performance Results](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#performance-results)
+6.  [Repository Structure](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#repository-structure)
+7.  [How to Run the Simulation](https://github.com/AditiKulkarni454/hft-udp-filter/blob/main/README.md#how-to-run-the-simulation)
 
 ## Project Overview
 
 In HFT, market data is broadcast over UDP to minimize latency. A trading system receives an enormous volume of this data, but a specific strategy may only be interested in a small fraction of it. This UDP Packet Filter acts as a hardware "sieve," sitting at the network edge to make an instantaneous decision: **pass** or **drop**.
 
 By dropping irrelevant packets in hardware, we prevent them from consuming valuable processing cycles in downstream logic or software, which is critical for maintaining a low-latency trading profile.
+
+![UDP_PACKET](https://github.com/user-attachments/assets/c537c9f1-5639-42a1-adfe-5e0198c198e0)
+
 
 The filter's logic is as follows:
 
@@ -43,6 +46,7 @@ The filter's logic is as follows:
 The core of the filter is a Finite State Machine (FSM) implemented in `udp_packet_filter.sv`. It sequences through the incoming byte stream and inspects headers at the correct offsets.
 
 ### FSM States
+  <img width="694" height="447" alt="UDP_FSM drawio" src="https://github.com/user-attachments/assets/44eb6eb0-33dc-4419-b500-e735b33cad72" />
 
   * `S_IDLE`: Waits for a new packet. 
   * `S_PARSE_ETH_HEADER`: Processes the 14-byte Ethernet header.
@@ -95,8 +99,8 @@ The verification process was executed using **ModelSim - Intel FPGA Edition**. T
 
 1.  **Clone the Repository:**
     ```sh
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone <https://github.com/AditiKulkarni454/hft-udp-filter>
+    cd <repo-directory>
     ```
 2.  **Launch ModelSim:** Open the ModelSim command-line interface or GUI.
 3.  **Run the Script:** In the ModelSim console, execute the `run.do` script.
